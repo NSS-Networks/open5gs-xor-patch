@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS builder
+FROM debian:11 AS builder
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y \
