@@ -101,3 +101,25 @@ index e11b932..f29ba0b 100644
  
              ogs_assert(udm_ue->serving_network_name);
  
+diff --git a/src/udr/nudr-handler.c b/src/udr/nudr-handler.c
+index 290ab27..c273bad 100644
+--- a/src/udr/nudr-handler.c
++++ b/src/udr/nudr-handler.c
+@@ -79,8 +79,15 @@ bool udr_nudr_dr_handle_subscription_authentication(
+             memset(&AuthenticationSubscription, 0,
+                     sizeof(AuthenticationSubscription));
+ 
+-            AuthenticationSubscription.authentication_method =
+-                OpenAPI_auth_method_5G_AKA;
++            /* XOR: set authentication_method based on algo field */
++            if (auth_info.algo[0] &&
++                    strcasecmp(auth_info.algo, "XOR") == 0) {
++                AuthenticationSubscription.authentication_method =
++                    OpenAPI_auth_method_NONE;
++            } else {
++                AuthenticationSubscription.authentication_method =
++                    OpenAPI_auth_method_5G_AKA;
++            }
+ 
+             ogs_hex_to_ascii(auth_info.k, sizeof(auth_info.k),
+                     k_string, sizeof(k_string));
