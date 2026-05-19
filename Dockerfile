@@ -14,9 +14,9 @@ WORKDIR /open5gs
 RUN git clone --depth 1 --branch v2.7.0 \
     https://github.com/open5gs/open5gs.git .
 
-COPY patches/ /patches/
-COPY open5gs-src/lib/crypt/xor.h lib/crypt/xor.h
-COPY open5gs-src/lib/crypt/xor.c lib/crypt/xor.c
+COPY patches/xor.c lib/crypt/xor.c
+COPY patches/xor.h lib/crypt/xor.h
+COPY patches/0001-xor-aka-patch.patch /patches/
 
 RUN git apply /patches/0001-xor-aka-patch.patch
 
