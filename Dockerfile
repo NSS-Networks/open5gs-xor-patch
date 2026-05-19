@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     libgnutls28-dev libgcrypt-dev libssl-dev libmongoc-dev \
     libbson-dev libyaml-dev libnghttp2-dev libmicrohttpd-dev \
     libcurl4-gnutls-dev libtins-dev libtalloc-dev meson \
-    libidn-dev && \
+    libidn11-dev && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /open5gs
