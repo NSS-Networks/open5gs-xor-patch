@@ -62,7 +62,7 @@ index 9a3cebd..7fe2284 100644
      ogs_guami_t guami;
  
 diff --git a/src/udm/nudr-handler.c b/src/udm/nudr-handler.c
-index e11b932..7ff17e0 100644
+index e11b932..f29ba0b 100644
 --- a/src/udm/nudr-handler.c
 +++ b/src/udm/nudr-handler.c
 @@ -105,6 +105,8 @@ bool udm_nudr_dr_handle_subscription_authentication(
@@ -74,7 +74,7 @@ index e11b932..7ff17e0 100644
                      OpenAPI_auth_method_5G_AKA) {
                  ogs_error("[%s] Not supported Auth Method [%d]",
                          udm_ue->suci,
-@@ -209,8 +211,23 @@ bool udm_nudr_dr_handle_subscription_authentication(
+@@ -209,8 +211,24 @@ bool udm_nudr_dr_handle_subscription_authentication(
  #endif
  #endif
  
