@@ -89,7 +89,8 @@ index e11b932..7ff17e0 100644
 +                xres_len = 8;
 +                ogs_xor_f1(udm_ue->k, udm_ue->rand,
 +                        udm_ue->sqn, udm_ue->amf, autn + 8);
-+                for (int j = 0; j < 6; j++)
++                int j;
++                for (j = 0; j < 6; j++)
 +                    autn[j] = udm_ue->sqn[j] ^ ak[j];
 +                memcpy(autn + 6, udm_ue->amf, OGS_AMF_LEN);
 +                ogs_log_hexdump(OGS_LOG_DEBUG, autn, OGS_AUTN_LEN);
