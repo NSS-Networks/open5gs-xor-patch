@@ -1,3 +1,5 @@
+FROM docker.io/gradiant/open5gs:2.7.0 AS base
+
 FROM debian:11 AS builder
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -25,4 +27,5 @@ RUN meson build --prefix=/opt/open5gs && \
     ninja -C build install
 
 FROM docker.io/gradiant/open5gs:2.7.0
-COPY --from=builder /opt/open5gs /opt/open5gs
+COPY --from=builder /opt/open5gs/bin /opt/open5gs/bin
+COPY --from=builder /opt/open5gs/lib /opt/open5gs/lib
