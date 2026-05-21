@@ -86,7 +86,7 @@ index e11b932..f29ba0b 100644
 +                uint8_t ak[OGS_AK_LEN];
 +                ogs_xor_f2345(udm_ue->k, udm_ue->rand,
 +                        xres, ck, ik, ak);
-+                xres_len = 8;
++                xres_len = 16;
 +                ogs_xor_f1(udm_ue->k, udm_ue->rand,
 +                        udm_ue->sqn, udm_ue->amf, autn + 8);
 +                int j;

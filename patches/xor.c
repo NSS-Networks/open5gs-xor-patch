@@ -17,8 +17,8 @@ int ogs_xor_f2345(const uint8_t *k, const uint8_t *rand,
     int i;
     uint8_t tmp[16];
 
-    /* f2: XRES = K[0..7] XOR RAND[0..7] */
-    for (i = 0; i < 8; i++)
+    /* f2: XRES = K XOR RAND [16 bytes] */
+    for (i = 0; i < 16; i++)
         xres[i] = k[i] ^ rand[i];
 
     /* f3: CK = K rotateLeft(8) XOR RAND */
