@@ -50,14 +50,14 @@ index 34324ac..c2124b9 100644
  
  int ogs_dbi_auth_info(char *supi, ogs_dbi_auth_info_t *auth_info);
 diff --git a/src/ausf/nudm-handler.c b/src/ausf/nudm-handler.c
-index 8872b60..4b857b3 100644
+index 8872b60..23083b5 100644
 --- a/src/ausf/nudm-handler.c
 +++ b/src/ausf/nudm-handler.c
 @@ -26,6 +26,8 @@ static const char *links_member_name(OpenAPI_auth_type_e auth_type)
          return OGS_SBI_RESOURCE_NAME_5G_AKA;
      } else if (auth_type == OpenAPI_auth_type_EAP_TLS) {
          return OGS_SBI_RESOURCE_NAME_EAP_SESSION;
-+    } else if (auth_type == OpenAPI_auth_type_NONE) {
++    } else if (auth_type == OpenAPI_auth_type_NULL) {
 +        return OGS_SBI_RESOURCE_NAME_5G_AKA;
      }
  
@@ -69,7 +69,7 @@ index 8872b60..4b857b3 100644
 -    if (AuthenticationInfoResult->auth_type !=
 -            OpenAPI_auth_type_5G_AKA) {
 +    if (AuthenticationInfoResult->auth_type != OpenAPI_auth_type_5G_AKA &&
-+        AuthenticationInfoResult->auth_type != OpenAPI_auth_type_NONE) {
++        AuthenticationInfoResult->auth_type != OpenAPI_auth_type_NULL) {
          ogs_error("[%s] Not supported Auth Method [%d]",
              ausf_ue->suci, AuthenticationInfoResult->auth_type);
          ogs_assert(true ==
@@ -79,7 +79,7 @@ index 8872b60..4b857b3 100644
  
 -    if (AuthenticationVector->av_type != OpenAPI_av_type_5G_HE_AKA) {
 +    if (AuthenticationVector->av_type != OpenAPI_av_type_5G_HE_AKA &&
-+        AuthenticationInfoResult->auth_type != OpenAPI_auth_type_NONE) {
++        AuthenticationInfoResult->auth_type != OpenAPI_auth_type_NULL) {
          ogs_error("[%s] Not supported Auth Method [%d]",
              ausf_ue->suci, AuthenticationVector->av_type);
          ogs_assert(true ==
